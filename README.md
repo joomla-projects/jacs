@@ -9,7 +9,7 @@ The first thing necessary is to setup your local environment. This will be handl
 ###Bash Installation / Implementation
 The first thing you'll need to do (purely for convenience sake) is to add the `jacs` command to your local PATH. This will allow you to run `jacs` commands from your command prompt regardless of the location of your jacs file. Otherwise you will need to specify the full path each time you wish to run jacs. 
 
-You should do this by editing your PATH variable stored in your profile and including the path to the jacs file.
+You should do this by editing your PATH variable stored in your profile and including the path to the jacs file. (Be sure to run `chmod u+x jacs` to make the file executable.)
 
 Once you have done this step you'll need to configure your remote servers.
 
