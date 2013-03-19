@@ -56,10 +56,10 @@ The following are the flags available with JACS.
 ###Example: Take Sites Offline
 You can take a single site offline by entering the following command from your terminal
 
-        jacs -s sitealias -a TakeOffline
+        jacs -s server1 -a TakeOffline
 
 You can take an entire group of sites offline by entering the following command from your terminal
 
-        jacs -g myGroup -a TakeOffline
+        jacs -g groupA -a TakeOffline
         
 Other actions can be called just as easily. It is important to note that the action name is the same as the name of the script file located in the script directory, minus the file extension.
