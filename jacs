@@ -1,0 +1,54 @@
+#! /bin/bash
+
+SERVER_DIR=`dirname $0`
+
+source $SERVER_DIR/servers.sh
+
+while getopts s:a:g: option
+	do
+        case "${option}"
+        in
+        	s) SITE=${OPTARG};;
+                a) ACTION=${OPTARG};;
+                g) GROUP=${OPTARG};;
+        esac
+done
+
+process_server_action () 
+{
+        eval "serverArray=(\${$1[@]})";
+
+        SERVER_NAME=${serverArray[0]};
+        SERVER_PATH=${serverArray[1]};
+
+        if [[ SERVER_NAME && SERVER_PATH ]];
+                then
+
+                if [ $ACTION ]; 
+                        then
+                        ssh $SERVER_NAME '
+                        php '$SERVER_PATH'/'$ACTION'.php;
+                        exit;'
+                else
+                        echo 'Please specify an existing action';
+                fi
+
+        else
+                echo 'Please enter a valid site';
+        fi
+
+}
+
+if [ $GROUP ]; 
+        then
+        eval "groupArray=(\${$GROUP[@]})";
+        
+        for SITE in "${groupArray[@]}"
+        do
+                process_server_action $SITE
+        done
+
+elif [ $SITE ];
+        then
+        process_server_action $SITE
+fi
